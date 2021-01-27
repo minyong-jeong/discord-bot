@@ -18,20 +18,25 @@ class MyBot(commands.Bot):
         self.loop.create_task(self.load_all_extensions())
 
     async def on_ready(self):
-        print('---------------')
         print('Logged in as')
         print(f'name: {bot.user.name}')
         print(f'id: {bot.user.id}')
         print('---------------')
 
+    async def on_connect(self):
+        print("Client has successfully connected to Discord.")
+        print('---------------')
+
+    async def on_disconnect(self):
+        print("Client has disconnected from Discord.")
+        print('---------------')
+
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound):
-            await ctx.send("명령어를 식별할 수 없습니다.")
+            await ctx.send("Command not found.")
         raise error
 
     async def load_all_extensions(self):
-        print('---------------')
-        print('Load all extensions...')
         for extension in COGS:
             try:
                 self.load_extension(extension)
