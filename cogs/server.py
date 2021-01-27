@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
 
-import time
-from pytz import timezone
-from datetime import datetime
-
 
 class Server(commands.Cog, name="server"):
     def __init__(self, bot):
