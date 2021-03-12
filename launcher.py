@@ -5,10 +5,8 @@ from utils import get_discord_key
 
 COMMAND_PREFIX = '!'
 COGS = [
-    "cogs.greetings",
     "cogs.timecheck",
-    "cogs.server",
-    "cogs.etc",
+    "cogs.server"
 ]
 
 
