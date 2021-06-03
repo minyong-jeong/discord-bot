@@ -1,4 +1,4 @@
 config/discordkey.json
 config/database.json
-config/authkey.json
+config/apikey.json
 **/__pycache__/
