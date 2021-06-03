@@ -38,7 +38,8 @@ class MongoController:
 
     def update_exchange(self, authkey):
         data = create_exchange_data(authkey)
-        if not self.find_one({"name": "exchange"}):
-            self.insert_one(data)
-        else:
-            self.update_one({"name": "exchange"}, {"$set": data})
+        if data:
+            if not self.find_one({"name": "exchange"}):
+                self.insert_one(data)
+            else:
+                self.update_one({"name": "exchange"}, {"$set": data})

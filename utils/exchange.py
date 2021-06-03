@@ -14,9 +14,10 @@ def get_exchange_data_from_api(authkey):
     datatype = "AP01"
     url = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=%s&data=%s" % (
         authkey, datatype)
-
     try:
         res = requests.get(url)
+        print(res.status_code)
+        print(res.json())
     except Exception as e:
         print(e)
         raise
@@ -27,13 +28,17 @@ def get_exchange_data_from_api(authkey):
 def create_exchange_data(authkey):
     data = get_exchange_data_from_api(authkey)
 
-    exchange = {
-        "name": "exchange",
-        "time": get_time_now(),
-        "exchange": {}
-    }
-    for item in data:
-        exchange["exchange"][item["cur_unit"]] = int(
-            item["bkpr"].replace(',', ''))
+    if len(data) > 0:
+        exchange = {
+            "name": "exchange",
+            "time": get_time_now(),
+            "exchange": {}
+        }
+        for item in data:
+            exchange["exchange"][item["cur_unit"]] = int(
+                item["bkpr"].replace(',', ''))
+    else:
+        print("Exchange API returns null value")
+        return None
 
     return exchange
