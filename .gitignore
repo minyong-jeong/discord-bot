@@ -2,3 +2,4 @@ config/discordkey.json
 config/database.json
 config/apikey.json
 **/__pycache__/
+**/*.log
