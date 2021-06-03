@@ -10,16 +10,19 @@ class TimeCheck(commands.Cog, name="timecheck"):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="네덜란드시간")
-    async def netherland_time(self, ctx):
-        now = datetime.now(timezone('Europe/Amsterdam'))
-        t = now.strftime('%H시 %M분')
-        await ctx.send(t)
-
-    @commands.command(name="한국시간")
-    async def korea_time(self, ctx):
-        now = datetime.now(timezone('Asia/Seoul'))
-        t = now.strftime('%H시 %M분')
+    @commands.command(name="시간확인")
+    async def check_time(self, ctx):
+        tz_list = [
+            'America/New_York',
+            'Europe/London',
+            'Europe/Amsterdam',
+            'Asia/Seoul'
+        ]
+        t = "```\n"
+        for tz in tz_list:
+            now = datetime.now(timezone(tz))
+            t = t + "%-20s ==> %s\n" % (tz, now.strftime('%Y/%m/%d %H:%M'))
+        t = t + "```"
         await ctx.send(t)
 
 

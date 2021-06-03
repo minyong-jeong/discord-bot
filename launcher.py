@@ -6,7 +6,8 @@ from utils import get_discord_key
 COMMAND_PREFIX = '!'
 COGS = [
     "cogs.timecheck",
-    "cogs.server"
+    "cogs.server",
+    "cogs.finance"
 ]
 
 
@@ -52,4 +53,4 @@ class MyBot(commands.Bot):
 
 if __name__ == "__main__":
     bot = MyBot()
-    bot.run(get_discord_key())
+    bot.run(get_discord_key("config/discordkey.json"))
