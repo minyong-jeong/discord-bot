@@ -8,7 +8,7 @@ import logging.handlers
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
 handler = logging.handlers.TimedRotatingFileHandler(
-    'discord.log', "midnight", 1)
+    'logs/discord.log', "midnight", 1)
 handler.suffix = "%Y%m%d"
 handler.setFormatter(logging.Formatter(
     '[%(asctime)s][%(processName)-10s][%(levelname)s] - %(message)s'))
